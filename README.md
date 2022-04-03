@@ -17,5 +17,3 @@
 #### TP1: spring Inversion of control dependency injection
 
 [source code](enset-ioc-2/)
-
-:
