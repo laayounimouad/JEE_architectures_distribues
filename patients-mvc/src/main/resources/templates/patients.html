@@ -40,7 +40,9 @@
                     <td th:text="${p.score}"></td>
                     <td >
                         <a onclick="return confirm('are You sure !')" class="btn btn-danger" th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}"><i class="bi bi-trash"></i> Delete </a>
-
+                    </td>
+                    <td >
+                        <a class="btn btn-primary" th:href="@{editPatients(id=${p.id},keyword=${keyword},page=${currentPage})}"> Edit </a>
                     </td>
                 </tr>
                 </tbody>
