@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.Date;
 import java.util.List;
@@ -30,7 +32,10 @@ public class JpaActivity21Application implements CommandLineRunner {
 
         patientRepository.save(
                 new Patient(null,"Imane","mlsdkf@mail",true,34));
-        List<Patient> patients = patientRepository.findAll();
+        //List<Patient> patients = patientRepository.findAll();
+        //List<Patient> patients = patientRepository.findByMalade(true);
+        Page<Patient> patients = patientRepository.findByMalade(false, PageRequest.of(0,4));
+        List<Patient> patientList=patientRepository.chercherPatients("%h%",40);
         patients.forEach(patient -> {
             System.out.println(patient.getName());
         });
