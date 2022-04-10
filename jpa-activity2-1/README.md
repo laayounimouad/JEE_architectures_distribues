@@ -54,9 +54,34 @@ si l'object a un id déja existant il va faire un update sur l'enregistrement si
     List<Patient> patientList=patientRepository.chercherPatients("%h%",40);
 
 #####  afficher les requetes SQL en temps d'execution :
-- ajouter au ficher properties :
+- ajouter aux ficher properties :
         
       spring.jpa.show-sql=true
 
 ### utilisation de MySQL :
-     
+    spring.datasource.url=jdbc:mysql://localhost:3306/DBP?createDatabaseIfNotExist=true
+    spring.jpa.hibernate.ddl-auto = update
+    spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MariaDBDialect
+# Mapping Associations
+## Mapping types :
+###*OneToMany* :
+###*ManyToMany* :
+###*OneToOne* :
+###*ManyToOne* :
+
+Quand vous utiliser EAGER il faut initialiser la list.
+
+Ex :
+```Ex
+Exemple Ici
+```
+
+##Mapping de l'heritage:
+#### SINGLE_TABLE :
+`qand il n'y a pas beaucoup de differences entre les tables`
+- dans la class abstract : @Inheritance(Strategy = InheritanceType.SINGLE_TABLE)
+- dans les classes herite : @DiscriminatorValue("name")
+#### TABLE_PER_CLASS
+- dans la class abstract : @Inheritance(Strategy = InheritanceType.TABLE_PER_CLASS)
+#### JOINED_TABLE
+- dans la class abstract : @Inheritance(Strategy = InheritanceType.JOINED)
