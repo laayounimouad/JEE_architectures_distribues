@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="template1">
+      layout:decorate="template1"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Patients</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
 <div layout:fragment="content1">
@@ -38,10 +37,12 @@
                     <td th:text="${p.dateNaissance}"></td>
                     <td th:text="${p.malade}"></td>
                     <td th:text="${p.score}"></td>
-                    <td >
-                        <a onclick="return confirm('are You sure !')" class="btn btn-danger" th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}"><i class="bi bi-trash"></i> Delete </a>
+                    <td sec:authorize="hasRole('ADMIN')">
+                        <a onclick="return confirm('are You sure !')" class="btn btn-danger" th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}"><i class="bi bi-trash"></i>
+                            Delete
+                        </a>
                     </td>
-                    <td >
+                    <td  sec:authorize="hasRole('ADMIN')" >
                         <a class="btn btn-primary" th:href="@{editPatients(id=${p.id},keyword=${keyword},page=${currentPage})}"> Edit </a>
                     </td>
                 </tr>

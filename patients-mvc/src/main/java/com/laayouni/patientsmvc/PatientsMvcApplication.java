@@ -19,9 +19,9 @@ public class PatientsMvcApplication {
 
     CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
-            patientRepository.save(new Patient(null,"hassan",new Date(),false,13));
-            patientRepository.save(new Patient(null,"patient2",new Date(),true,15));
-            patientRepository.save(new Patient(null,"patient3",new Date(),false,20));
+            patientRepository.save(new Patient(null,"hassan",new Date(),false,130));
+            patientRepository.save(new Patient(null,"patient2",new Date(),true,150));
+            patientRepository.save(new Patient(null,"patient3",new Date(),false,200));
             patientRepository.findAll().forEach(patient -> {
                 System.out.println(patient.getNom());
             });

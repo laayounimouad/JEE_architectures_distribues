@@ -26,7 +26,9 @@ public class PatientController {
     private PatientRepository patientRepository;
 
     @GetMapping(path = "/delete")
-    public String delete(Long id,String keyword,int page){
+    public String delete(Long id,
+                         @RequestParam(name = "keyword", defaultValue = "") String keyword,
+                         int page){
         patientRepository.deleteById(id);
         return "redirect:/index?page="+page+"&keyword="+keyword;
     }
@@ -46,7 +48,7 @@ public class PatientController {
 
     @GetMapping(path = "/")
     public String home(){
-        return "redirect:/index";
+        return "home";
     }
 
     @GetMapping(path = "/patients")
