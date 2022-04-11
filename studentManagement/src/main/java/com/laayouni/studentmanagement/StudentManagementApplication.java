@@ -17,7 +17,7 @@ public class StudentManagementApplication {
         SpringApplication.run(StudentManagementApplication.class, args);
     }
 
-    @Bean
+
     CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
         return args -> {
             studentRepository.save(new Student(null,"lastNam1","firstName1","mail@mail.com",new Date(), Genre.MALE,true));
