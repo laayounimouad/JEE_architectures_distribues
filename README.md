@@ -19,10 +19,10 @@
 [source code](enset-ioc-2/)
 
 
-#### Activité Pratique Spring MVC Thymeleaf
+#### Activité Pratique N°2 - JPA, Hibernate et Spring Data
 
 [source code](jpa-activity2-1)
 
-#### Activité Pratique N°2 - JPA, Hibernate et Spring Data
+#### Activité Pratique Spring MVC Thymeleaf
 
 [source code](patients-mvc/)
