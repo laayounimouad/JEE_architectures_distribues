@@ -18,6 +18,7 @@ import javax.naming.Binding;
 import javax.validation.Valid;
 import java.util.List;
 
+
 @Controller
 @AllArgsConstructor
 public class PatientController {
