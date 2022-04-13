@@ -2,10 +2,13 @@ package com.laayouni.patientsmvc;
 
 import com.laayouni.patientsmvc.entities.Patient;
 import com.laayouni.patientsmvc.repositories.PatientRepository;
+import com.laayouni.patientsmvc.security.service.SecurityService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 
@@ -17,6 +20,7 @@ public class PatientsMvcApplication {
     }
 
 
+
     CommandLineRunner commandLineRunner(PatientRepository patientRepository){
         return args -> {
             patientRepository.save(new Patient(null,"hassan",new Date(),false,130));
@@ -26,5 +30,24 @@ public class PatientsMvcApplication {
                 System.out.println(patient.getNom());
             });
         };
+    }
+
+    CommandLineRunner saveUsers(SecurityService securityService){
+        return args -> {
+            securityService.saveNewUser("test1","1234","1234");
+            securityService.saveNewUser("mouad","1234","1234");
+            securityService.saveNewUser("hassan","1234","1234");
+
+            securityService.saveNewRole("ADMIN","");
+            securityService.saveNewRole("USER","");
+
+            securityService.addRoleToUser("test1","ADMIN");
+            securityService.addRoleToUser("hassan","USER");
+            securityService.addRoleToUser("mouad","ADMIN");
+        };
+    }
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

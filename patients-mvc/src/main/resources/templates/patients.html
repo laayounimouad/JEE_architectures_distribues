@@ -15,7 +15,7 @@
         <div class="card-header">Liste des patients</div>
         <div class="card-body">
             <form method="get"
-            th:action="@{index}">
+            th:action="@{/user/index}">
                 <label> Key Word</label>
                 <input type="text" name="keyword" th:value="${keyword}">
                 <button type="submit" class="btn btn-secondary">Chercher</button>
@@ -38,12 +38,12 @@
                     <td th:text="${p.malade}"></td>
                     <td th:text="${p.score}"></td>
                     <td sec:authorize="hasRole('ADMIN')">
-                        <a onclick="return confirm('are You sure !')" class="btn btn-danger" th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}"><i class="bi bi-trash"></i>
+                        <a onclick="return confirm('are You sure !')" class="btn btn-danger" th:href="@{/admin/delete(id=${p.id},keyword=${keyword},page=${currentPage})}"><i class="bi bi-trash"></i>
                             Delete
                         </a>
                     </td>
                     <td  sec:authorize="hasRole('ADMIN')" >
-                        <a class="btn btn-primary" th:href="@{editPatients(id=${p.id},keyword=${keyword},page=${currentPage})}"> Edit </a>
+                        <a class="btn btn-primary" th:href="@{/admin/editPatients(id=${p.id},keyword=${keyword},page=${currentPage})}"> Edit </a>
                     </td>
                 </tr>
                 </tbody>

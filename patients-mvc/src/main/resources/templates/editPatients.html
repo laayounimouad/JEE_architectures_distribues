@@ -11,7 +11,7 @@
 <body>
 <div layout:fragment="content1">
     <div class="container">
-    <form method="post" th:action="@{save(page=${page},keyword=${keyword})}">
+    <form method="post" th:action="@{/admin/save(page=${page},keyword=${keyword})}">
         <div class="mb-3">
             <label for="id" class="form-label">ID</label>
             <input th:value="${patient.id}" type="text" name="id" class="form-control" id="id">
