@@ -15,10 +15,10 @@
         <div class="card-header">Students list</div>
         <div class="card-body">
             <form method="get"
-                th:action="@{index}">
+                th:action="@{/user/index}">
                 <label>Key Word</label>
                 <input type="text" name="keyword" th:value="${keyword}">
-                <button type="submit" class="btn btn-secondary">Chercher</button>
+                <button type="submit" class="btn btn-secondary">Search</button>
             </form>
             <table class="table">
                 <thead>
@@ -41,14 +41,14 @@
                     <td th:text="${s.getDateNaissance()}"></td>
                     <td th:text="${s.getGenre()}"></td>
                     <td th:text="${s.regle}"></td>
-                    <!--<td sec:authorize="hasRole('ADMIN')">
-                        <a onclick="return confirm('are You sure !')" class="btn btn-danger" th:href="@{delete(id=${p.id},keyword=${keyword},page=${currentPage})}"><i class="bi bi-trash"></i>
+                    <td sec:authorize="hasAuthority('ADMIN')">
+                        <a onclick="return confirm('are You sure !')" class="btn btn-danger" th:href="@{/admin/delete(id=${s.getId()},keyword=${keyword},page=${currentPage})}"><i class="bi bi-trash"></i>
                             Delete
                         </a>
                     </td>
-                    <td  sec:authorize="hasRole('ADMIN')" >
-                        <a class="btn btn-primary" th:href="@{editPatients(id=${p.id},keyword=${keyword},page=${currentPage})}"> Edit </a>
-                    </td>-->
+                    <td  sec:authorize="hasAuthority('ADMIN')" >
+                        <a class="btn btn-primary" th:href="@{/admin/update(id=${s.getId()},keyword=${keyword},page=${currentPage})}"> Edit </a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -57,7 +57,7 @@
                 <li th:each="page,status:${pages}">
                     <a th:class="${status.index == currentPage ? 'btn btn-primary mx-1':'btn btn-outline-primary mx-1'}"
                        th:text="${status.index}"
-                    th:href="@{index(page=${status.index},keyword=${keyword})}"/>
+                    th:href="@{/user/index(page=${status.index},keyword=${keyword})}"/>
 
                 </li>
             </ul>

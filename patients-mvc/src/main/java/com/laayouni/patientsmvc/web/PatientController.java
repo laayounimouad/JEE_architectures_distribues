@@ -26,7 +26,7 @@ public class PatientController {
     //@Autowired
     private PatientRepository patientRepository;
 
-    @GetMapping(path = "/delete/delete")
+    @GetMapping(path = "/admin/delete")
     public String delete(Long id,
                          @RequestParam(name = "keyword", defaultValue = "") String keyword,
                          int page){

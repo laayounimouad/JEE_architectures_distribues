@@ -11,13 +11,17 @@
 <body>
 <div layout:fragment="content1">
     <div class="container">
-    <form method="post" th:action="@{/admin/save}">
+    <form method="post" th:action="@{/admin/save(page=${page},keyword=${keyword})}">
+        <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input th:value="${student.id}" type="text" name="id" class="form-control" id="id">
+        </div>
         <!--first name -->
-            <div class="mb-3">
-                <label for="firstname" class="form-label">First name</label>
-                <input th:value="${student.firstName}" type="text" name="firstName" class="form-control" id="firstname" aria-describedby="firstnameHelp">
-                <div id="firstnameHelp" class="form-text text-danger" th:errors="${student.firstName}"></div>
-            </div>
+        <div class="mb-3">
+            <label for="firstname" class="form-label">First name</label>
+            <input th:value="${student.firstName}" type="text" name="firstName" class="form-control" id="firstname" aria-describedby="firstnameHelp">
+            <div id="firstnameHelp" class="form-text text-danger" th:errors="${student.firstName}"></div>
+        </div>
         <!-- last name-->
         <div class="mb-3">
             <label for="lastname" class="form-label">Last Name</label>
@@ -31,11 +35,11 @@
             <div id="emailHelp" class="form-text text-danger" th:errors="${student.email}"></div>
         </div>
         <!-- Date-->
-            <div class="mb-3">
-                <label for="date" class="form-label">Date of Birth</label>
-                <input th:value="${student.dateNaissance}" type="date" name="dateNaissance" class="form-control" id="date" aria-describedby="dateHelp">
-                <div id="dateHelp" class="form-text text-danger" th:errors="${student.dateNaissance}"></div>
-            </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date of Birth</label>
+            <input th:value="${student.dateNaissance}" type="date" name="dateNaissance" class="form-control" id="date" aria-describedby="dateHelp">
+            <div id="dateHelp" class="form-text text-danger" th:errors="${student.dateNaissance}"></div>
+        </div>
         <!-- Genre -->
         <div class="mb-3">
             <label for="genre" class="form-label">Gender</label>
@@ -43,18 +47,19 @@
                 <option value="MALE">MALE</option>
                 <option value="FEMALE">FEMALE</option>
             </select>
-<!--            <input th:value="${student.genre}" type="number" name="genre" class="form-control" id="genre" aria-describedby="genreHelp">-->
+            <!--            <input th:value="${student.genre}" type="number" name="genre" class="form-control" id="genre" aria-describedby="genreHelp">-->
             <div id="genreHelp" class="form-text text-danger" th:errors="${student.genre}"></div>
         </div>
         <!-- regle -->
-            <div class="mb-3 form-check">
-                <label for="regle" class="form-check-label">Regle</label>
-                <input th:checked="${student.regle}" type="checkbox" name="regle" class="form-check-input" id="regle" aria-describedby="regleHelp">
-                <div id="regleHelp" class="form-text text-danger" th:errors="${student.regle}"></div>
-            </div>
+        <div class="mb-3 form-check">
+            <label for="regle" class="form-check-label">Regle</label>
+            <input th:checked="${student.regle}" type="checkbox" name="regle" class="form-check-input" id="regle" aria-describedby="regleHelp">
+            <div id="regleHelp" class="form-text text-danger" th:errors="${student.regle}"></div>
+        </div>
             <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>
 </div>
+
 </body>
 </html>

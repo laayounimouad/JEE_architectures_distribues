@@ -1,9 +1,9 @@
-package com.laayouni.patientsmvc.security.service;
+package com.laayouni.studentmanagement.security.service;
 
-import com.laayouni.patientsmvc.security.entities.AppRole;
-import com.laayouni.patientsmvc.security.entities.AppUser;
-import com.laayouni.patientsmvc.security.repositories.AppRoleRepository;
-import com.laayouni.patientsmvc.security.repositories.AppUserRepository;
+import com.laayouni.studentmanagement.security.entites.AppRole;
+import com.laayouni.studentmanagement.security.entites.AppUser;
+import com.laayouni.studentmanagement.security.repositories.AppRoleRepository;
+import com.laayouni.studentmanagement.security.repositories.AppUserRepository;
 import groovy.util.logging.Slf4j;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,10 +16,11 @@ import java.util.UUID;
 @Slf4j
 @AllArgsConstructor
 @Transactional
-public class SecurityServiceImpl implements SecurityService {
+public class SecurityServiceImpl implements SecurityService{
     private AppUserRepository appUserRepository;
     private AppRoleRepository appRoleRepository;
     private PasswordEncoder passwordEncoder;
+
     @Override
     public AppUser saveNewUser(String username, String password, String rePassword) {
         if(!password.equals(rePassword)) throw new RuntimeException("Passwords not match");
